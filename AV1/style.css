@@ -1,0 +1,803 @@
+/* Estilos con Paleta Pastel para la Página de Aniversario */
+
+:root {
+    --color-peach: #FFDAB9;
+    --color-light-blue: #ADD8E6;
+    --color-mint-green: #98FB98;
+    --color-pink: #FFB6C1;
+    --color-lilac: #D8BFD8;
+
+    --text-dark: #4a5568; /* Un gris oscuro suave para texto */
+    --text-medium: #718096;
+    --background-light: #FFFFFF;
+    --background-body: #fcfaff; /* Un blanco muy muy ligeramente teñido de lila/rosa */
+    --border-color: var(--color-lilac);
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-body);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Estilos para la pantalla de clave */
+#password-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-peach); /* Fondo melocotón para la pantalla de clave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.password-box {
+    background-color: var(--background-light);
+    padding: 40px;
+    border-radius: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra un poco más suave */
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    border: 1px solid var(--border-color);
+}
+
+.password-box h1 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700; /* Más peso para el título principal */
+    font-size: 2.3em;
+    color: var(--color-pink); /* Título en rosa */
+    margin-bottom: 20px;
+}
+
+.password-box p {
+    font-size: 1em;
+    color: var(--text-medium);
+    margin-bottom: 20px;
+}
+
+.password-hint {
+    font-size: 0.95em;
+    color: var(--text-medium);
+    margin-top: -10px;
+    margin-bottom: 25px;
+}
+
+#password-input {
+    width: calc(100% - 32px);
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 0;
+    font-size: 1em;
+    font-family: 'Work Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#password-input[readonly] {
+    background-color: #fdfbff; /* Un blanco casi puro, ligeramente diferente del fondo de la caja */
+    cursor: default;
+    text-align: center;
+    font-size: 1.8em;
+    letter-spacing: 0.4em;
+    padding: 10px 15px;
+    color: var(--text-dark);
+}
+
+#password-input:focus {
+    border-color: var(--color-light-blue); /* Borde azul claro al enfocar */
+    box-shadow: 0 0 0 2px rgba(173, 216, 230, 0.3); /* Sombra de foco sutil */
+}
+
+#unlock-button {
+    background-color: var(--color-light-blue); /* Botón azul claro */
+    color: var(--background-light);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#unlock-button:hover {
+    background-color: #97c8da; /* Azul claro un poco más oscuro */
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px; /* Espacio reducido entre botones del teclado */
+    margin: 25px auto;
+    max-width: 260px;
+}
+
+.keypad-btn {
+    background-color: #fff0e9; /* Un melocotón muy muy pálido */
+    border: 1px solid var(--color-peach);
+    color: var(--text-dark);
+    padding: 15px 12px;
+    font-size: 1.3em;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    touch-action: manipulation;
+}
+
+.keypad-btn:hover {
+    background-color: var(--color-peach);
+    border-color: #f8c8a0;
+}
+
+.keypad-btn:active {
+    background-color: #f8c8a0;
+}
+
+.keypad-btn.keypad-btn-action {
+    background-color: var(--color-lilac); /* Lila para acciones */
+    border-color: #c7afe2;
+    color: var(--background-light);
+    font-size: 1em;
+}
+.keypad-btn.keypad-btn-action:hover {
+    background-color: #c7afe2;
+}
+
+
+.error-message {
+    color: #e53e3e; /* Rojo de error, un poco más suave */
+    margin-top: 15px;
+    font-size: 0.9em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.error-message.show {
+    opacity: 1;
+}
+
+/* Estilos para el contenido principal */
+#main-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+#main-content.visible {
+    display: flex;
+    opacity: 1;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.container {
+    background-color: var(--background-light);
+    padding: 30px;
+    border-radius: 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    max-width: 900px;
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid var(--border-color);
+}
+
+header h1 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: 2.8em;
+    margin-bottom: 25px;
+    color: var(--color-pink); /* Rosa para el título principal */
+}
+
+h2 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.8em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: var(--color-mint-green); /* Verde menta para subtítulos */
+}
+
+/* Sección de Mensaje Personalizado */
+.message-section p {
+    font-size: 1.05em;
+    line-height: 1.7;
+    max-width: 650px;
+    margin: 0 auto 15px auto;
+    color: var(--text-dark);
+}
+
+.signature {
+    font-family: 'Work Sans', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1em;
+    margin-top: 20px;
+    color: var(--color-pink); /* Firma en rosa */
+}
+
+/* Sección de Momentos Inolvidables */
+.moment-item {
+    background-color: var(--background-light);
+    padding: 20px;
+    border-radius: 0;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f0e8f4; /* Un lila aún más pálido para el borde del item */
+    transition: box-shadow 0.3s ease;
+}
+
+.moment-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.moment-item h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.5em;
+    color: var(--color-light-blue); /* Azul claro para títulos de momentos */
+    margin-bottom: 10px;
+}
+
+.moment-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
+    margin-bottom: 15px;
+    border: 1px solid #e8f0f4; /* Borde azul muy pálido */
+    display: block;
+}
+
+.moment-item p {
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--text-medium);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Carrusel "Nuestras fotos" */
+.our-photos-section h2 { /* Asegurarse que el título use el color correcto */
+    color: var(--color-mint-green);
+}
+
+.photo-carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+    border: 1px solid var(--color-lilac); /* Borde lila */
+    background-color: var(--background-light);
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    /* No necesita borde si el carrusel ya tiene uno */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 182, 193, 0.6); /* Rosa semitransparente */
+    color: white;
+    border: none;
+    border-radius: 0;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(255, 182, 193, 0.9); /* Rosa más opaco */
+}
+
+/* Secciones Colapsables (Por más...) */
+.collapsible-sections h2 { /* Asegurarse que el título use el color correcto */
+    color: var(--color-mint-green);
+}
+
+.collapsible {
+    background-color: var(--color-peach); /* Fondo melocotón */
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #f8c8a0; /* Melocotón más oscuro para borde */
+    text-align: left;
+    outline: none;
+    font-size: 1.2em;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600; /* Un poco más de peso para destacar */
+    transition: background-color 0.3s ease;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.active, .collapsible:hover {
+    background-color: #f8c8a0; /* Melocotón más oscuro */
+}
+
+.collapsible:after {
+    content: '+';
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--color-pink); /* Ícono en rosa */
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: '−';
+}
+
+
+/* --- Estilos para Contenedor Colapsable de Mini-Carruseles --- */
+.content-gallery.collapsible-carousel-container {
+    /* Mantiene las propiedades para el efecto de colapso */
+    padding: 0; /* El padding ahora estará en el mini-carousel si es necesario */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s ease-out, padding 0.45s ease-out; /* Ajusta la transición */
+    background-color: #fff7f2; /* Un melocotón extremadamente pálido */
+    border-radius: 0;
+    margin-top: 0;
+    border: 1px solid #f8c8a0; /* Borde melocotón más oscuro */
+    border-top: none;
+    /* No tendrá display: grid, el contenido será el .mini-carousel */
+}
+
+/* Cuando está activo (expandido), podemos añadir un poco de padding */
+.collapsible.active + .content-gallery.collapsible-carousel-container {
+    padding-top: 15px; /* Solo padding superior e inferior cuando está abierto */
+    padding-bottom: 15px;
+}
+
+
+/* --- Estilos para los Mini-Carruseles --- */
+.mini-carousel {
+    position: relative;
+    max-width: 90%; /* Que sea un poco más pequeño que el contenedor colapsable */
+    margin: 0 auto; /* Centrado */
+    overflow: hidden;
+    background-color: var(--background-light); /* Fondo blanco para el carrusel mismo */
+    border: 1px solid var(--color-lilac); /* Borde lila */
+}
+
+.mini-carousel-slides-container {
+    position: relative;
+    width: 100%;
+}
+
+.mini-carousel-slide {
+    display: none; /* Oculta todos los slides por defecto */
+    width: 100%;
+    text-align: center;
+    /* Puedes añadir una animación de fade si quieres */
+    /* animation: carouselFadeIn 0.5s; */
+}
+
+.mini-carousel-slide.active-slide {
+    display: block; /* Muestra solo el slide activo */
+}
+
+.mini-carousel-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 300px; /* Altura máxima para las imágenes en estos carruseles */
+    object-fit: contain; /* Para que la imagen completa se vea */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Botones para mini-carruseles (reutilizando .carousel-btn y añadiendo especificidad) */
+.mini-carousel .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.25); /* Un poco más sutiles */
+    color: white;
+    border: none;
+    padding: 6px 9px; /* Más pequeños */
+    font-size: 16px;  /* Más pequeños */
+    cursor: pointer;
+    z-index: 5;
+    transition: background-color 0.3s ease;
+}
+
+.mini-carousel .carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.mini-carousel .mini-prev-btn {
+    left: 8px;
+}
+
+.mini-carousel .mini-next-btn {
+    right: 8px;
+}
+
+
+/* Sección de Cuenta Regresiva */
+.countdown-section h2 { /* Asegurarse que el título use el color correcto */
+     color: var(--color-mint-green);
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background-color: var(--background-light);
+    padding: 20px;
+    border-radius: 0;
+    min-width: 100px;
+    text-align: center;
+    border: 1px solid var(--color-lilac); /* Borde lila */
+}
+
+.countdown-item span {
+    font-size: 2.5em;
+    font-weight: 700; /* Más peso para los números */
+    display: block;
+    line-height: 1;
+    color: var(--color-mint-green); /* Números en verde menta */
+}
+
+.countdown-item p {
+    font-size: 0.9em;
+    margin-top: 8px;
+    opacity: 0.8;
+    color: var(--text-medium);
+}
+
+/* Mensaje de Aniversario (cuando la cuenta llega a 0) */
+.anniversary-message {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    color: var(--color-pink); /* Mensaje en rosa */
+    margin-top: 30px;
+    animation: fadeIn 1s forwards;
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    font-size: 0.9em;
+    opacity: 0.7;
+    color: var(--text-medium);
+}
+
+/* Animaciones (fadeIn, fadeOut se mantienen) */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Efecto de celebración: Confeti */
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background-color: var(--confetti-color); /* Usará los colores de la paleta definidos en JS */
+    border-radius: 0;
+    opacity: 0;
+    animation: fallAndFade linear infinite;
+    z-index: 9999;
+}
+
+@keyframes fallAndFade {
+    0% { transform: translateY(-10vh) scale(0.5) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(110vh) scale(1.2) rotate(0deg); opacity: 0; }
+}
+
+/* === Media Queries (Se mantienen los ajustes de layout, los colores son globales) === */
+/* (Pega aquí tus media queries existentes, ya que los cambios de color son globales 
+   y no deberían necesitar ajustes específicos dentro de las media queries a menos que 
+   quieras cambiar la paleta de colores por tamaño de pantalla, lo cual no es común) */
+
+/* Ejemplo de cómo se verían los media queries (sin cambios internos, solo para mostrar que deben estar) */
+@media (max-width: 992px) {
+    header h1 { font-size: 2.4em; }
+    h2 { font-size: 1.6em; }
+    .moment-item h3 { font-size: 1.3em; }
+    .collapsible { font-size: 1.1em; padding: 12px; }
+    .countdown-item span { font-size: 2.2em; }
+    .anniversary-message { font-size: 1.8em; }
+}
+
+@media (max-width: 768px) {
+    body { padding-top: 10px; padding-bottom: 10px; }
+    .container { padding: 20px; width: 95%; }
+    header h1 { font-size: 2em; }
+    h2 { font-size: 1.5em; }
+    .moment-item h3 { font-size: 1.2em; }
+    .message-section p { font-size: 1em; }
+    .signature { font-size: 1em; }
+    .countdown { gap: 10px; }
+    .countdown-item { padding: 15px; min-width: 90px; }
+    .countdown-item span { font-size: 2em; }
+    .countdown-item p { font-size: 0.8em; }
+    .anniversary-message { font-size: 1.6em; }
+    .content-gallery { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
+    /* .content-gallery img { height: 80px; } */ /* Comentado porque ahora es height: auto */
+    .photo-carousel { max-width: 95%; } /* Ajuste del carrusel de fotos */
+    .carousel-slide img { max-height: 60vh; }
+    .carousel-btn { padding: 8px 12px; font-size: 18px; }
+    .password-box { padding: 30px; width: 90%; }
+    .password-box h1 { font-size: 1.8em; }
+    .keypad { max-width: 240px; gap: 8px; } /* Ajuste del keypad */
+    .keypad-btn { padding: 12px 10px; font-size: 1.2em; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 15px; }
+    header h1 { font-size: 1.8em; margin-bottom: 20px; }
+    h2 { font-size: 1.3em; }
+    .moment-item h3 { font-size: 1.1em; }
+    .message-section p { font-size: 0.9em; }
+    .collapsible { font-size: 1em; padding: 10px; }
+    .countdown-item { width: calc(50% - 10px); margin-bottom: 10px; padding: 10px; }
+    .countdown-item span { font-size: 1.8em; }
+    .anniversary-message { font-size: 1.3em; }
+    .content-gallery { grid-template-columns: repeat(2, 1fr); gap: 5px; }
+    /* .content-gallery img { height: 70px; } */ /* Comentado porque ahora es height: auto */
+    .carousel-slide img { max-height: 50vh; } /* Ajuste del carrusel de fotos */
+    .carousel-btn { padding: 6px 10px; font-size: 16px; }
+    .password-box { padding: 20px; }
+    .password-box h1 { font-size: 1.6em; }
+    #password-input[readonly] { font-size: 1.5em; letter-spacing: 0.3em; }
+    #unlock-button { font-size: 1em; padding: 10px 12px; }
+    .keypad { max-width: 220px; } /* Ajuste del keypad */
+    .keypad-btn { padding: 10px 8px; font-size: 1.1em; }
+}
+
+/* === ESTILOS PARA EL CARRUSEL "NUESTRAS FOTOS" (Revisar y asegurar) === */
+
+/* Contenedor principal del carrusel */
+.photo-carousel {
+    position: relative; /* Necesario para posicionar los botones de navegación absoluta */
+    max-width: 800px;   /* O el ancho que prefieras */
+    margin: 20px auto;  /* Centra el carrusel */
+    overflow: hidden;   /* Oculta cualquier cosa que se desborde (importante si los slides fueran más grandes que el contenedor) */
+    border: 1px solid var(--color-lilac); /* Usando tu variable de color lila */
+    background-color: var(--background-light); /* Usando tu variable de fondo claro */
+}
+
+/* Contenedor interno de las diapositivas */
+.carousel-slides-container {
+    position: relative; /* No necesita mucho más si los slides se manejan con display:none/block */
+    width: 100%;
+    /* La altura se adaptará al slide activo */
+}
+
+/* Estilo para CADA diapositiva individual */
+.carousel-slide {
+    display: none; /* <<<< ¡MUY IMPORTANTE! ESTO OCULTA TODAS LAS DIAPOSITIVAS POR DEFECTO. */
+    width: 100%;   /* Cada diapositiva ocupa el ancho completo del carrusel */
+    text-align: center; /* Centra la imagen dentro del slide si es más estrecha */
+    animation: carouselFadeIn 0.7s ease-in-out; /* Animación suave al cambiar */
+}
+
+/* Estilo para la diapositiva que está ACTIVA (visible) */
+.carousel-slide.active-slide {
+    display: block; /* <<<< ¡MUY IMPORTANTE! ESTO HACE VISIBLE ÚNICAMENTE LA DIAPOSITIVA ACTIVA. */
+}
+
+/* Estilo para las imágenes dentro de las diapositivas */
+.carousel-slide img {
+    width: 100%;            /* La imagen se ajusta al ancho del slide */
+    height: auto;           /* La altura se ajusta para mantener la proporción */
+    max-height: 70vh;       /* Altura máxima para evitar que sea demasiado grande */
+    object-fit: contain;    /* Asegura que toda la imagen sea visible dentro de las dimensiones */
+    display: block;         /* Elimina espacio extra debajo de la imagen */
+    margin: 0 auto;         /* Ayuda a centrar si object-fit:contain deja espacio */
+}
+
+/* (Tus estilos para .carousel-btn, .prev-btn, .next-btn deberían estar aquí también) */
+/* Por ejemplo: */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 182, 193, 0.6); /* Rosa semitransparente (var(--color-pink) con alfa) */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+.carousel-btn:hover {
+    background-color: rgba(255, 182, 193, 0.9);
+}
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+/* Animación para el cambio de slides */
+@keyframes carouselFadeIn {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+/* === ESTILOS ACTUALIZADOS/NUEVOS PARA EL PUZZLE DE MASCOTAS === */
+.puzzle-section {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    padding: 25px 15px; /* Más padding vertical */
+    background-color: #fff7f2; 
+    border: 1px solid var(--color-peach);
+    border-radius: 0; /* Mantener consistencia */
+}
+
+.puzzle-section h2 {
+    color: var(--color-pink);
+    margin-bottom: 10px;
+}
+
+.puzzle-section p { /* Párrafo introductorio del puzzle */
+    color: var(--text-medium);
+    margin-bottom: 20px;
+    font-size: 1.05em;
+}
+
+.puzzle-controls {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Espacio entre el selector de imagen y el botón de mezclar */
+}
+
+.puzzle-image-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espacio entre el título "Elige una mascota" y los botones */
+}
+
+.puzzle-image-selector p { /* Párrafo "Elige una mascota:" */
+    margin-bottom: 5px;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.puzzle-image-selector .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los botones de selección de mascota */
+}
+
+.puzzle-img-choice-btn {
+    background-color: var(--background-light);
+    border: 2px solid var(--color-lilac); /* Borde lila */
+    color: var(--text-dark);
+    padding: 8px 18px;
+    font-size: 0.95em;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 0;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.puzzle-img-choice-btn:hover {
+    background-color: var(--color-lilac); /* Fondo lila al pasar el mouse */
+    color: var(--background-light);
+    transform: translateY(-2px);
+}
+
+.puzzle-img-choice-btn.active {
+    background-color: var(--color-pink); /* Rosa para el botón activo */
+    color: var(--background-light);
+    border-color: var(--color-pink); /* Borde rosa */
+    box-shadow: 0 2px 8px rgba(255, 182, 193, 0.4); /* Sombra rosa sutil */
+    transform: translateY(0); /* Sin efecto de elevación si ya está activo */
+}
+
+#shufflePuzzleBtn { /* Botón de "Mezclar y Empezar" */
+    background-color: var(--color-light-blue);
+    color: var(--background-light);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#shufflePuzzleBtn:hover {
+    background-color: #97c8da; /* Azul claro un poco más oscuro */
+}
+
+.puzzle-board {
+    display: grid;
+    border: 3px solid var(--color-lilac);
+    margin: 0 auto;
+    position: relative;
+    background-color: var(--background-body);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    /* width, height, grid-template-columns/rows se establecen por JS */
+}
+
+.puzzle-piece {
+    /* background-size se establece por JS */
+    border: 1px solid var(--color-peach);
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.15s ease-in-out;
+    /* width, height se establecen por JS */
+}
+
+.puzzle-piece.empty {
+    background-image: none !important;
+    background-color: rgba(216, 191, 216, 0.25); /* Lila muy transparente para el hueco */
+    cursor: default;
+}
+
+.puzzle-piece:hover:not(.empty) {
+    transform: scale(1.03); /* Efecto hover más sutil */
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+#puzzle-victory-message {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: var(--color-mint-green);
+    color: var(--text-dark);
+    font-weight: bold;
+    font-size: 1.2em;
+    border: 1px solid #75d875; /* Verde menta un poco más oscuro */
+}
+#puzzle-victory-message p {
+    margin: 0;
+    color: var(--text-dark);
+}

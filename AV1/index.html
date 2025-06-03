@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Aniversario</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="password-screen">
+        <div class="password-box">
+            <h1>💖 Desbloquea tu Regalo 🎁</h1>
+            <p>Ingresa la clave secreta 🔑 para acceder a tu sorpresa 🎉.</p>
+            <p class="password-hint">Pista: Recuerda la fecha de nuestro aniversario (DD/MM)😉</p>
+
+            <input type="password" id="password-input" placeholder="••••" readonly maxlength="4">
+
+            <div class="keypad">
+                <button type="button" class="keypad-btn" data-value="1">1</button>
+                <button type="button" class="keypad-btn" data-value="2">2</button>
+                <button type="button" class="keypad-btn" data-value="3">3</button>
+                <button type="button" class="keypad-btn" data-value="4">4</button>
+                <button type="button" class="keypad-btn" data-value="5">5</button>
+                <button type="button" class="keypad-btn" data-value="6">6</button>
+                <button type="button" class="keypad-btn" data-value="7">7</button>
+                <button type="button" class="keypad-btn" data-value="8">8</button>
+                <button type="button" class="keypad-btn" data-value="9">9</button>
+                <button type="button" class="keypad-btn keypad-btn-action" data-action="backspace">⌫</button> <button type="button" class="keypad-btn" data-value="0">0</button>
+                <button type="button" class="keypad-btn keypad-btn-action" id="clearPasswordBtn">Limpiar</button> </div>
+
+            <button id="unlock-button">Desbloquear</button>
+            <p id="password-message" class="error-message"></p>
+        </div>
+    </div>
+
+    <div id="main-content" class="hidden">
+        <div class="container">
+            <header>
+                <h1>¡Celebrando Nuestro Aniversario N°2!</h1>
+            </header>
+
+            <section class="message-section">
+                <h2>Un Mensaje para mi Anahí</h2>
+                <p>
+                    Mi Anahí, ya ha pasado otro año en que compartimos momentos juntos. Cada uno de ellos me haz hecho muy feliz, gracias por tanto, espero que te guste este regalo. No sabes cuanto Te Amo.
+                </p>
+                <p class="signature">- Con todo mi amor, disfruta estos recuerdos</p>
+            </section>
+
+            <section class="moments-section">
+                <h2>Nuestros Momentos de este año</h2>
+                <div class="moment-item">
+                    <h3>Viaje a Chiloé</h3>
+                    <img src="images/chiloe1.jpeg" alt="Viaje a Chiloe">
+                    <p>El frío de Chiloé no importó. Explorar sus paisajes contigo fue una experiencia que atesoraré por siempre. Recorrer y caminar por cucao. Espero que volvamos pronto y podamos pasear juntitos otra vez (Ojalá sin coliguachos). </p>
+                </div>
+                <div class="moment-item">
+                    <h3>Paseos por Valparaíso y Viña</h3>
+                    <img src="images/valpo8.jpeg" alt="Valparaiso">
+                    <p>Las calles coloridas, los murales, la brisa de Valparaíso y Viña. Lo recuerdo con mucho cariño, un 18 de septiembre juntito, con muchas papas fritas. (No olvido cuando te hice caminar mucho, perdón por eso :c).</p>
+                </div>
+                <div class="moment-item">
+                    <h3>Concierto de Miranda</h3>
+                    <video class="moment-video" controls poster="ruta/a/tu/imagen_poster_miranda.jpg">
+                        <source src="images/miranda.mp4" type="video/mp4">
+                        Tu navegador no soporta la etiqueta de video. Intenta descargándolo: 
+                        <a href="images/miranda.mp4">Descargar video</a>.
+                    </video>
+                    <p> No tengo muchas fotos del concierto de Miranda. Pero guardo en mi corazón como cantabas y estabas abrazada a mi. Ojalá podamos crear otro recuerdo en un concierto este año.</p>
+                </div>
+
+                <div class="moment-item">
+                    <h3>Biólogo #392</h3>
+                    <img src="images/defensa.jpeg" alt="Defensa de titulo">
+                    <p> Estoy muy agradecido de que me hayas acompañado en todo el proceso. Fuiste mi apoyo. Gracias por estar conmigo.</p>
+                </div>
+                
+            </section>
+
+            <section class="collapsible-sections">
+                <h2>Por más...</h2>
+
+                <button class="collapsible">Por más completos</button>
+                <div class="content-gallery collapsible-carousel-container" id="gallery-completos">
+                    <div class="mini-carousel">
+                        <div class="mini-carousel-slides-container">
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/completo1.jpeg" alt="Delicioso completo que compartimos">
+                            </div>
+                            <div class="mini-carousel-slide">
+                                <img src="images/completo2.jpeg" alt="Otro completo memorable">
+                            </div>
+                            <div class="mini-carousel-slide">
+                                <img src="images/completo3.jpeg" alt="Otro completo memorable">
+                            </div>
+                            <div class="mini-carousel-slide">
+                                <img src="images/completo4.jpeg" alt="Otro completo memorable">
+                            </div>
+                            </div>
+                        <button type="button" class="carousel-btn mini-prev-btn" aria-label="Anterior">&#10094;</button>
+                        <button type="button" class="carousel-btn mini-next-btn" aria-label="Siguiente">&#10095;</button>
+                    </div>
+                </div>
+
+                <button class="collapsible">Por más 14 de febrero</button>
+                <div class="content-gallery collapsible-carousel-container" id="gallery-14feb">
+                    <div class="mini-carousel">
+                        <div class="mini-carousel-slides-container">
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/val3.jpeg" alt="Nuestro San Valentín especial">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/val2.jpeg" alt="Nuestro San Valentín especial">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/val1.jpeg" alt="Nuestro San Valentín especial">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/val7.jpeg" alt="Nuestro San Valentín especial">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/val6.jpeg" alt="Nuestro San Valentín especial">
+                            </div>
+                        </div>
+                        <button type="button" class="carousel-btn mini-prev-btn" aria-label="Anterior">&#10094;</button>
+                        <button type="button" class="carousel-btn mini-next-btn" aria-label="Siguiente">&#10095;</button>
+                    </div>
+                </div>
+
+                <button class="collapsible">Por más mañanas juntos</button>
+                <div class="content-gallery collapsible-carousel-container" id="gallery-conciertos">
+                    <div class="mini-carousel">
+                        <div class="mini-carousel-slides-container">
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/des10.jpeg" alt="Imagen de concierto 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/des12.jpeg" alt="Imagen de concierto 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/des1.jpeg" alt="Imagen de concierto 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/des2.jpeg" alt="Imagen de concierto 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/des3.jpeg" alt="Imagen de concierto 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/des4.jpeg" alt="Imagen de concierto 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/des5.jpeg" alt="Imagen de concierto 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/des6.jpeg" alt="Imagen de concierto 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/des7.jpeg" alt="Imagen de concierto 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/des9.jpeg" alt="Imagen de concierto 1">
+                            </div>
+                        </div>
+                        <button type="button" class="carousel-btn mini-prev-btn" aria-label="Anterior">&#10094;</button>
+                        <button type="button" class="carousel-btn mini-next-btn" aria-label="Siguiente">&#10095;</button>
+                    </div>
+                </div>
+
+                <button class="collapsible">Por más días del patrimonio juntos</button>
+                <div class="content-gallery collapsible-carousel-container" id="gallery-patrimonio">
+                     <div class="mini-carousel">
+                        <div class="mini-carousel-slides-container">
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/pat1.jpeg" alt="Imagen día del patrimonio 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/pat2.jpeg" alt="Imagen día del patrimonio 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/pat3.jpeg" alt="Imagen día del patrimonio 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/pat4.jpeg" alt="Imagen día del patrimonio 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/pat5.jpeg" alt="Imagen día del patrimonio 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/pat6.jpeg" alt="Imagen día del patrimonio 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/pat7.jpeg" alt="Imagen día del patrimonio 1">
+                            </div>
+                            </div>
+                        <button type="button" class="carousel-btn mini-prev-btn" aria-label="Anterior">&#10094;</button>
+                        <button type="button" class="carousel-btn mini-next-btn" aria-label="Siguiente">&#10095;</button>
+                    </div>
+                </div>
+
+                <button class="collapsible">Por más viajes</button>
+                <div class="content-gallery collapsible-carousel-container" id="gallery-viajes">
+                    <div class="mini-carousel">
+                        <div class="mini-carousel-slides-container">
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/valpo5.jpeg" alt="Imagen de viaje 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/valpo6.jpeg" alt="Imagen de viaje 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/valpo7.jpeg" alt="Imagen de viaje 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/valpo8.jpeg" alt="Imagen de viaje 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/valpo4.jpeg" alt="Imagen de viaje 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/via1.jpeg" alt="Imagen de viaje 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/via2.jpeg" alt="Imagen de viaje 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/via3.jpeg" alt="Imagen de viaje 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/via4.jpeg" alt="Imagen de viaje 1">
+                            </div>
+                            <div class="mini-carousel-slide active-slide">
+                                <img src="images/via5.jpeg" alt="Imagen de viaje 1">
+                            </div>
+
+                        </div>
+                        <button type="button" class="carousel-btn mini-prev-btn" aria-label="Anterior">&#10094;</button>
+                        <button type="button" class="carousel-btn mini-next-btn" aria-label="Siguiente">&#10095;</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="our-photos-section">
+                <h2>Nuestras fotos</h2>
+                <div class="photo-carousel" id="photoCarousel">
+                    <div class="carousel-slides-container">
+                        <div class="carousel-slide active-slide">
+                            <img src="images/juntos1.jpeg" alt="Descripción de foto 1">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/juntos8.jpeg" alt="Descripción de foto 2">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/juntos9.jpeg" alt="Descripción de foto 3">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/juntos6.jpeg" alt="Descripción de foto 4">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/juntos5.jpeg" alt="Descripción de foto 4">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/juntos6.jpeg" alt="Descripción de foto 4">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/juntos7.jpeg" alt="Descripción de foto 4">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/juntos2.jpeg" alt="Descripción de foto 4">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/juntos3.jpeg" alt="Descripción de foto 4">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="images/juntos4.jpeg" alt="Descripción de foto 4">
+                        </div>
+                        </div>
+                    <button class="carousel-btn prev-btn" id="prevPhotoBtn" aria-label="Foto anterior">&#10094;</button>
+                    <button class="carousel-btn next-btn" id="nextPhotoBtn" aria-label="Siguiente foto">&#10095;</button>
+                </div>
+            </section>
+
+            <section class="countdown-section">
+                <h2>Faltan para nuestro próximo aniversario:</h2>
+                <div id="countdown" class="countdown">
+                    <div class="countdown-item">
+                        <span id="days">00</span>
+                        <p>Días</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours">00</span>
+                        <p>Horas</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes">00</span>
+                        <p>Minutos</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds">00</span>
+                        <p>Segundos</p>
+                    </div>
+                </div>
+                <p id="anniversary-message" class="hidden">¡Feliz Aniversario, mi amor! ¡Hoy celebramos nuestra historia!</p>
+            </section>
+
+            <section class="puzzle-section">
+                <h2>🐾 Puzzle de Mascotas 🐾</h2>
+                <p>¡Desliza las piezas para armar la imagen de firu, meche, pp o blanquito! (espero que te guste)</p>
+                
+                <div class="puzzle-controls">
+                    <div class="puzzle-image-selector">
+                        <p>Elige una mascota:</p>
+                        <div class="button-group">
+                            <button type="button" class="puzzle-img-choice-btn active" data-image-src="images/blanqui2.jpeg" data-pet-name="Blanquito">Blanquito</button>
+                            <button type="button" class="puzzle-img-choice-btn" data-image-src="images/firu1.jpeg" data-pet-name="Firulai">Firulai</button>
+                            <button type="button" class="puzzle-img-choice-btn" data-image-src="images/meche.jpeg" data-pet-name="Meche">Meche</button>
+                            <button type="button" class="puzzle-img-choice-btn" data-image-src="images/pepe.jpeg" data-pet-name="Pepe">Pepe</button>
+                        </div>
+                    </div>
+                    <button id="shufflePuzzleBtn" type="button">Mezclar y Empezar de Nuevo</button>
+                </div>
+
+                <div id="pet-puzzle-board" class="puzzle-board">
+                    </div>
+                <div id="puzzle-victory-message" class="hidden">
+                    <p>Te amo mucho mi Anahíi 🎉🐶🐱</p>
+                </div>
+            </section>
+
+            <footer>
+                <p>&copy; 2025 Anahí y Juan.</p>
+            </footer>
+        </div>
+    </div>
+
+    <audio id="secret-song" src="cancion/nuestracancion.mp3" preload="auto"></audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>
